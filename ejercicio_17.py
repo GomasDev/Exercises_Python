@@ -29,5 +29,5 @@ def calcular_area(figura,longitudes):
     return area
     
 figura=input("Introduce la figura: ")
-longitudes=list(map(float,input("Introduce las longitudes: ").split()))
+longitudes=list(map(float,input("Introduce las longitudes: ").split())) #introduces valores en string y separamos en listas con split() y luego convertimos a float todos los valores
 print("El area de la figura es: ",calcular_area(figura,longitudes))
