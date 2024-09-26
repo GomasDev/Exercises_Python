@@ -5,7 +5,7 @@ def primo(num):
     for n in range (2,num):
         if num%n==0:
             return False    
-        return True
+    return True
         
 num=int(input("Dime un numero para saber si es primo o no: "))
 print(primo(num))
