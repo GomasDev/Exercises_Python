@@ -1,15 +1,10 @@
-#Crea una función que determine si una cadena de texto es un palíndromo.
-# (string: palabra) => (boolean: es_palindromo)
+#Crear un programa que te pregunte por tu edad y lugar de nacimiento.
+# Si eres mayor de edad y de Motril te saludará en cualquier otro caso se despedirá de ti.
 
-def palindromo(texto):
-    texto_limpio = ''.join(letra.lower() for letra in texto if letra.isalnum()) #letra.lower() convierte las letras en minusculas,
-                                                                                #para que no afecte al resultado
-    return texto_limpio==texto_limpio[::-1]
+edad=int(input("Introduce tu edad: "))
+nacimiento=input("Introduce lugar de nacimiento: ")
 
-texto="Hola me llamo juan"
-texto2="Anita lava la tina"
-print(texto)
-print(palindromo(texto))
-print(texto2)
-print(palindromo(texto2))
-
+if edad>=18 and nacimiento=="Motril":
+    print("Hola buenos dias")
+else:
+    print("Hasta luego")

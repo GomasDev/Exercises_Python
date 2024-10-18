@@ -1,13 +1,10 @@
-#Crea una función que obtenga el máximo de una lista de números.
-#No  está permitido el uso de la función max(). (int[]: nums) => (int: máximo) 
+#Crea un programa que te pida dos números y que compruebe si son iguales o no.
 
-def maxList(nums):
-    maximo=nums[0]
-    for i in nums:
-        if(i>maximo):
-            maximo=i #sobreescribimos el valor de maximo ya que i era mayor
-    return maximo
+num1=input("Introduce un numero: ")
+num2=input("Introduce un segundo numero: ")
 
-nums=[4,2,1,5,2,6,3,]
-maximo=maxList(nums) #llamo a la funcion
-print("El numero maximo de la lista es: ",maximo)
+
+if num1==num2:
+    print("Son iguales")
+else:
+    print("No son iguales")

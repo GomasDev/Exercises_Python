@@ -1,11 +1,9 @@
-#Crea una función que obtenga la sumatoria de una lista de números.
-#(int[]: nums) => (int: sumatoria)
+#Crea un programa que te pida dos números y que compruebe cuál es el mayor y cuál es el menor.
 
+num1=input("Introduce un numero: ")
+num2=input("Introduce un segundo numero: ")
 
-def sumatorio(nums):
-        suma=sum(nums)  #funcion de python que hace sumatorio
-        return suma
-
-nums=[1,2,3,4,5]
-suma=sumatorio(nums)
-print("El sumatorio de numeros es: ",suma)
+if num1>num2:
+    print("El numero mayor es: ",num1)
+else:
+    print("El numero mayor es: ",num2)
