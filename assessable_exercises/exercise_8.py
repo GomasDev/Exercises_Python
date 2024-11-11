@@ -49,8 +49,8 @@ def carta():
         case 12:
             num="rey"
     return palo,num
-eleccionPalo=input("Elige el palo de la carta(oros, copas, bastos y espadas): ")
-eleccionNum=input("Elige el numero o la figura de la carta (1 al 10 o sota, caballo y rey): ")
+eleccion=input("Elige una carta (ejemplo:'rey de bastos o 7 de oros'): ")
+eleccionNum,eleccionPalo=eleccion.split(" de ")
 palo=None
 num=None
 n=1
