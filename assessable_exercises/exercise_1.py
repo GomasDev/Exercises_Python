@@ -19,6 +19,7 @@ while suma<100:
     print(suma)
     cantidad += 1
 media=suma/cantidad
+print("La suma es: ",suma)
 print("La media es: ",media)
 print("La cantidad de numeros introducidos es: ",cantidad)
 print("El numero mayor es: ",nummax)
