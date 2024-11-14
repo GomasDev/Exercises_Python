@@ -2,7 +2,7 @@ import random
 import time
 import os
 from PIL import Image
-
+import cv2
 
 #seleccion de operandos
 def operador():
@@ -77,8 +77,29 @@ def menuConfiguracion():
 def mostrar_imagen(ruta,tiempo):
     imagen=Image.open(ruta)
     imagen.show()
-    time.sleep(tiempo)
-    if os.name=="posix":
-        os.system("pkill -f display")
-    elif os.name=="nt":
-        os.system("taskkill /f /im dllhost.exe")
+    #time.sleep(tiempo)
+
+#generar video
+def mostrar_video(ruta):
+    # Abre el archivo de video
+    cap = cv2.VideoCapture(ruta)
+
+    # Verifica si el archivo de video se abrió correctamente
+    if not cap.isOpened():
+        print("Error al abrir el archivo de video")
+        return
+
+    # Reproduce el video hasta que termine o se presione la tecla 'q'
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if ret:
+            cv2.imshow('Video', frame)
+            # Espera 30 ms entre frames (ajustable) y sale si se presiona 'q'
+            if cv2.waitKey(30) & 0xFF == ord('q'):
+                break
+        else:
+            break
+
+    # Libera los recursos y cierra las ventanas
+    cap.release()
+    cv2.destroyAllWindows()

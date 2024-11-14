@@ -3,29 +3,32 @@
 # la primera unidad de medida a la segunda unidad de medida. Utiliza la función para comprobar que funciona.
 # Nota 1 tonelada = 1000 kilos y 1 kilo = 1000 gramos
 
-def cambio(num,unid1,unid2):
-    if unid1=="gramos":
-        if unid2=="kilos":
-            num=num*0.001
-            return num
-        else:
-            #unid2=toneladas
-            num=num*0.000001
-            return num
-    elif unid1=="kilos":
-        if unid2=="gramos":
-            num=num*1000
-            return num
-        else:
-            num=num*0.001
-            return num
-    elif unid1=="toneladas":
-        if unid2=="kilos":
-            num=num*1000
-            return num
-        else:
-            num=num*1000000
-            return num
+def cambio(num: float,unid1: str,unid2:str )->float:
+    if unid1==unid2:
+        return num
+    else:
+        if unid1=="gramos":
+            if unid2=="kilos":
+                num=num*0.001
+                return num
+            else:
+                #unid2=toneladas
+                num=num*0.000001
+                return num
+        elif unid1=="kilos":
+            if unid2=="gramos":
+                num=num*1000
+                return num
+            else:
+                num=num*0.001
+                return num
+        elif unid1=="toneladas":
+            if unid2=="kilos":
+                num=num*1000
+                return num
+            else:
+                num=num*1000000
+                return num
 
 num=float(input("Introduce un numero: "))
 unid1=input("Introduce su unidad de medida (kilos,gramos,toneladas): ")

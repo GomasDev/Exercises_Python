@@ -3,7 +3,7 @@
 Usa la función para comprobar que funciona.
 """
 
-def divisores(num):
+def divisores(num: int):
     n=0
     while n<num:
         n+=1

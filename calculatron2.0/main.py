@@ -19,7 +19,7 @@ logro_bronce=False
 logro_plata=False
 logro_oro=False
 logro_platino=False
-racha_platino=0
+logro_master=False
 
 while True:
     seleccion = function.imprimirMenu()
@@ -33,9 +33,11 @@ while True:
         case 1:
             nPartida += 1
             rachas=0
+            racha_platino=0
+            racha_master=0
             while nVidas>0:
                 resultadoOperacion=function.generarCuenta(nummin,nummax)
-                resultado = int(input("Introduce el resultado: "))
+                resultado =int(input("Introduce el resultado: "))
                 if resultado==resultadoOperacion:
                     print("Correcto")
                     aciertos+=1
@@ -55,12 +57,16 @@ while True:
                             logro_oro=True
                             print("LOGRO DE ORO DESBLOQUEADO")
                             function.mostrar_imagen('oro_lol.jpeg', 3)
-                    if nummin >= 10 and nummax >= 15:
-                        racha_platino+=1
-                        if racha_platino==10:
-                            logro_platino=True
-                            print("LOGRO DE PLATINO DESBLOQUEADO")
-                            function.mostrar_imagen('platino_lol.jpeg', 3)
+
+                            if rachasmax==10 and nummin >= 10 and nummax >= 15:
+                                logro_platino=True
+                                print("LOGRO DE PLATINO DESBLOQUEADO")
+                                function.mostrar_imagen('platino_lol.jpeg', 3)
+                        elif rachasmax==20 and nummin>= 15 and nummax >= 50 and nVidas==1:
+                            logro_master=True
+                            print("LOGRO DE MASTER DESBLOQUEADO")
+                            function.mostrar_video('siu.mp4')
+
 
                 else:
                     nVidas = nVidas - 1
@@ -135,3 +141,7 @@ while True:
                 print("Logro de PLATINO: OBTENIDO :)")
             else:
                 print("Logro de PLATINO: acierta diez operaciones consecutivas numero min>10 y numero maximo>15 en una mismo partida->NO conseguido :(")
+            if logro_master:
+                print("Logro de MASTER: OBTENIDO :)")
+            else:
+                print("Logro de MASTER: acierta 20 operaciones consecutivas numero min>10 y numero maximo>50 en una misma partida->NO conseguido :(")
