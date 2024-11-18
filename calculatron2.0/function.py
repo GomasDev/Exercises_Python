@@ -106,3 +106,6 @@ def mostrar_video(ruta):
     # Libera los recursos y cierra las ventanas
     cap.release()
     cv2.destroyAllWindows()
+    #prueba git
+    #prueba git
+    #prueba git
