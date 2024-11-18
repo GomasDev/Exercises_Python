@@ -54,16 +54,16 @@ while True:
                     print("Te quedan ",nVidas," vidas")
                     nFalladas+=1
                     rachas=0
+                    if nVidas==0 and aciertos==0 and logro_loser==False:
+                        logro_loser = True
+                        print("LOGRO DE LOSER DESBLOQUEADO")
                 nOperacion+=1
-                #if  nFalladas== and logro_loser==False:
-                 #   logro_loser=True
-                  #  print("LOGRO DE LOSER DESBLOQUEADO")
             print("En tu partida numero ",nPartida," has acertado ",aciertos," y has fallado ",fallos)
             print("Has acertado un ",round(aciertos*100/(aciertos+fallos),2)," % de las cuentas")
 
         case 2:
             salir=False
-            while salir==False:
+            while not salir:
                 print("La configuracion actual es: ")
                 print("Numero de vidas: ",nVidas)
                 print("Numero minimo: ",nummin)
@@ -81,13 +81,13 @@ while True:
                         nVidas = vidaNuevo
                     case 2:
                         nuevomin = int(input("Introduce el numero de minimo: "))
-                        while nuevomin>nummax:
+                        while nuevomin>=nummax:
                             nuevomin = int(input("El numero minimo ha de ser menor al numero maximo: "))
                             nummin = nuevomin
                         nummin=nuevomin
                     case 3:
                         nuevomax = int(input("Introduce el numero de maximo: "))
-                        while nuevomax < nummin:
+                        while nuevomax <= nummin:
                             nuevomax = int(input("El numero maximo ha de ser mayor al numero minimo: "))
                             nummax = nuevomax
                         nummax = nuevomax
