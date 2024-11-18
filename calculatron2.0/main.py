@@ -1,41 +1,25 @@
 import function
 
 #inicializacion de variables
-resultado=0
-nVidas=3
-vidaNuevo=3
-resultadoOperacion=0
-aciertos=0
-fallos=0
-nPartida=0
-nummin=0
+resultado=resultadoOperacion=aciertos=fallos=nPartida=nummin=nOperacion=nAcertadas=nFalladas=rachas=rachasmax=0
+nVidas=vidaNuevo=3
 nummax=10
-nOperacion=0
-nAcertadas=0
-nFalladas=0
-rachas=0
-rachasmax=0
-logro_bronce=False
-logro_plata=False
-logro_oro=False
-logro_platino=False
-racha_platino=0
-
+logro_bronce=logro_plata=logro_oro=logro_platino=logro_master=logro_loser=salir=False
+rachasplatino=0
 while True:
     seleccion = function.imprimirMenu()
     nVidas=vidaNuevo
-    aciertos=0
-    fallos=0
+    aciertos=fallos=0
     match seleccion:
         case 0:
                 print("Saliendo")
                 break
         case 1:
             nPartida += 1
-            rachas=0
+            rachas=rachasmax=0
             while nVidas>0:
                 resultadoOperacion=function.generarCuenta(nummin,nummax)
-                resultado = int(input("Introduce el resultado: "))
+                resultado =int(input("Introduce el resultado: "))
                 if resultado==resultadoOperacion:
                     print("Correcto")
                     aciertos+=1
@@ -43,64 +27,70 @@ while True:
                     rachas+=1
                     if rachas>rachasmax:
                         rachasmax=rachas
-                        if rachasmax==3:
+                        if rachasmax==3 and logro_bronce==False:
                             logro_bronce=True
                             print("LOGRO DE BRONCE DESBLOQUEADO")
-                            function.mostrar_imagen('bronce_lol.jpeg',3)
-                        elif rachasmax==7:
+                            #function.mostrar_imagen('bronce_lol.jpeg',3)
+                        if rachasmax==7 and logro_plata==False:
                             logro_plata=True
                             print("LOGRO DE PLATA DESBLOQUEADO")
-                            function.mostrar_imagen('plata_lol.jpeg', 3)
-                        elif rachasmax==10:
+                            #function.mostrar_imagen('plata_lol.jpeg', 3)
+                        if rachasmax==10 and logro_oro==False:
                             logro_oro=True
                             print("LOGRO DE ORO DESBLOQUEADO")
-                            function.mostrar_imagen('oro_lol.jpeg', 3)
-                    if nummin >= 10 and nummax >= 15:
-                        racha_platino+=1
-                        if racha_platino==10:
-                            logro_platino=True
+                            # function.mostrar_imagen('oro_lol.jpeg', 3)
+                        if rachasmax==10 and nummin>=10 and nummax>=15 and logro_platino==False:
+                            logro_platino = True
                             print("LOGRO DE PLATINO DESBLOQUEADO")
-                            function.mostrar_imagen('platino_lol.jpeg', 3)
-
+                            #function.mostrar_imagen('platino_lol.jpeg', 3)
+                        if rachasmax==20 and nummin>= 15 and nummax >= 50 and nVidas==1 and logro_master==False:
+                            logro_master=True
+                            print("LOGRO DE MASTER DESBLOQUEADO")
+                            #function.mostrar_video('siu.mp4')
                 else:
-                    nVidas = nVidas - 1
+                    nVidas-=1
                     fallos+=1
                     print("Incorrecto, el resultado era: ",resultadoOperacion)
                     print("Te quedan ",nVidas," vidas")
                     nFalladas+=1
                     rachas=0
+                    if nVidas==0 and aciertos==0 and logro_loser==False:
+                        logro_loser = True
+                        print("LOGRO DE LOSER DESBLOQUEADO")
                 nOperacion+=1
-
             print("En tu partida numero ",nPartida," has acertado ",aciertos," y has fallado ",fallos)
             print("Has acertado un ",round(aciertos*100/(aciertos+fallos),2)," % de las cuentas")
 
         case 2:
-            print("La configuracion actual es: ")
-            print("Numero de vidas: ",nVidas)
-            print("Numero minimo: ",nummin)
-            print("Numero maximo: ",nummax)
-            selecionConfi=function.menuConfiguracion()
-            match selecionConfi:
-                case 0:
-                    print("Saliendo")
-                case 1:
-                    vidaNuevo=int(input("Introduce el nuevo numero de vidas: (entre 1 y 10: "))
-                    while vidaNuevo<0 or vidaNuevo>10:
-                        vidaNuevo=int(input("Numero no valido, ha de ser entre 1 y 10: "))
+            salir=False
+            while not salir:
+                print("La configuracion actual es: ")
+                print("Numero de vidas: ",nVidas)
+                print("Numero minimo: ",nummin)
+                print("Numero maximo: ",nummax)
+                selecionConfi=function.menuConfiguracion()
+                match selecionConfi:
+                    case 0:
+                        print("Saliendo")
+                        salir=True
+                    case 1:
+                        vidaNuevo=int(input("Introduce el nuevo numero de vidas: (entre 1 y 10): "))
+                        while vidaNuevo<0 or vidaNuevo>10:
+                            vidaNuevo=int(input("Numero no valido, ha de ser entre 1 y 10: "))
+                            nVidas = vidaNuevo
                         nVidas = vidaNuevo
-                    nVidas = vidaNuevo
-                case 2:
-                    nuevomin=int(input("Introduce el numero de minimo: "))
-                    if nummin>nummax:
-                        nuevomin=int(input("El numero minimo ha de ser menor al numero maximo: "))
+                    case 2:
+                        nuevomin = int(input("Introduce el numero de minimo: "))
+                        while nuevomin>=nummax:
+                            nuevomin = int(input("El numero minimo ha de ser menor al numero maximo: "))
+                            nummin = nuevomin
                         nummin=nuevomin
-                    nummin=nuevomin
-                case 3:
-                    nuevomax = int(input("Introduce el numero de maximo: "))
-                    if nummax < nummin:
-                        nuevomax = int(input("El numero maximo ha de ser mayor al numero minimo: "))
+                    case 3:
+                        nuevomax = int(input("Introduce el numero de maximo: "))
+                        while nuevomax <= nummin:
+                            nuevomax = int(input("El numero maximo ha de ser mayor al numero minimo: "))
+                            nummax = nuevomax
                         nummax = nuevomax
-                    nummax = nuevomax
 
 
 
@@ -135,3 +125,11 @@ while True:
                 print("Logro de PLATINO: OBTENIDO :)")
             else:
                 print("Logro de PLATINO: acierta diez operaciones consecutivas numero min>10 y numero maximo>15 en una mismo partida->NO conseguido :(")
+            if logro_master:
+                print("Logro de MASTER: OBTENIDO :)")
+            else:
+                print("Logro de MASTER: acierta 20 operaciones consecutivas numero min>10 y numero maximo>50 en una misma partida->NO conseguido :(")
+            if logro_loser:
+                print("Logro de LOSER: OBTENIDO :(")
+            else:
+                print("Logro de LOSER: No acertas ninguna operacion :(")
