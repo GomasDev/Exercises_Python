@@ -65,8 +65,12 @@ def imprimirMenu()->int:
     print("3.Estadisticas")
     print("4.Logro")
     print("0.Salir")
-    seleccion=int(input("Selecciona una opcion: "))
-    return seleccion
+    try:
+        seleccion=int(input("Selecciona una opcion: "))
+    except ValueError as error:
+        print("Error: ", error)
+    else:
+        return seleccion
 
 #Menu configuracion
 def menuConfiguracion()->int:
@@ -74,8 +78,12 @@ def menuConfiguracion()->int:
     print("2.Cambiar numero minimo")
     print("3.Cambiar numero maximo")
     print("0.Salir")
-    seleccion=int(input("¿Que desea hacer? "))
-    return seleccion
+    try:
+        seleccion=int(input("¿Que desea hacer? "))
+    except ValueError as error:
+        print("Error: ", error)
+    else:
+        return seleccion
 
 #generar imagen
 def mostrar_imagen(ruta,tiempo):

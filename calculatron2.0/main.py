@@ -18,48 +18,56 @@ while True:
             nPartida += 1
             rachas=rachasmax=0
             while nVidas>0:
-                resultadoOperacion=function.generarCuenta(nummin,nummax)
-                resultado =int(input("Introduce el resultado: "))
-                if resultado==resultadoOperacion:
-                    print("Correcto")
-                    aciertos+=1
-                    nAcertadas+=1
-                    rachas+=1
-                    if rachas>rachasmax:
-                        rachasmax=rachas
-                        if rachasmax==3 and logro_bronce==False:
-                            logro_bronce=True
-                            print("LOGRO DE BRONCE DESBLOQUEADO")
-                            #function.mostrar_imagen('bronce_lol.jpeg',3)
-                        if rachasmax==7 and logro_plata==False:
-                            logro_plata=True
-                            print("LOGRO DE PLATA DESBLOQUEADO")
-                            #function.mostrar_imagen('plata_lol.jpeg', 3)
-                        if rachasmax==10 and logro_oro==False:
-                            logro_oro=True
-                            print("LOGRO DE ORO DESBLOQUEADO")
-                            # function.mostrar_imagen('oro_lol.jpeg', 3)
-                        if rachasmax==10 and nummin>=10 and nummax>=15 and logro_platino==False:
-                            logro_platino = True
-                            print("LOGRO DE PLATINO DESBLOQUEADO")
-                            #function.mostrar_imagen('platino_lol.jpeg', 3)
-                        if rachasmax==20 and nummin>= 15 and nummax >= 50 and nVidas==1 and logro_master==False:
-                            logro_master=True
-                            print("LOGRO DE MASTER DESBLOQUEADO")
-                            #function.mostrar_video('siu.mp4')
+
+                try:
+                    resultadoOperacion=function.generarCuenta(nummin,nummax)
+                    resultado =int(input("Introduce el resultado: "))
+
+                except ValueError as error:
+                    print(f"ERROR:{error}")
+                    continue
+
                 else:
-                    nVidas-=1
-                    fallos+=1
-                    print("Incorrecto, el resultado era: ",resultadoOperacion)
-                    print("Te quedan ",nVidas," vidas")
-                    nFalladas+=1
-                    rachas=0
-                    if nVidas==0 and aciertos==0 and logro_loser==False:
-                        logro_loser = True
-                        print("LOGRO DE LOSER DESBLOQUEADO")
-                nOperacion+=1
-            print("En tu partida numero ",nPartida," has acertado ",aciertos," y has fallado ",fallos)
-            print("Has acertado un ",round(aciertos*100/(aciertos+fallos),2)," % de las cuentas")
+                    if resultado==resultadoOperacion:
+                        print("Correcto")
+                        aciertos+=1
+                        nAcertadas+=1
+                        rachas+=1
+                        if rachas>rachasmax:
+                            rachasmax=rachas
+                            if rachasmax==3 and logro_bronce==False:
+                                logro_bronce=True
+                                print("LOGRO DE BRONCE DESBLOQUEADO")
+                                #function.mostrar_imagen('bronce_lol.jpeg',3)
+                            if rachasmax==7 and logro_plata==False:
+                                logro_plata=True
+                                print("LOGRO DE PLATA DESBLOQUEADO")
+                                #function.mostrar_imagen('plata_lol.jpeg', 3)
+                            if rachasmax==10 and logro_oro==False:
+                                logro_oro=True
+                                print("LOGRO DE ORO DESBLOQUEADO")
+                                # function.mostrar_imagen('oro_lol.jpeg', 3)
+                            if rachasmax==10 and nummin>=10 and nummax>=15 and logro_platino==False:
+                                logro_platino = True
+                                print("LOGRO DE PLATINO DESBLOQUEADO")
+                                #function.mostrar_imagen('platino_lol.jpeg', 3)
+                            if rachasmax==20 and nummin>= 15 and nummax >= 50 and nVidas==1 and logro_master==False:
+                                logro_master=True
+                                print("LOGRO DE MASTER DESBLOQUEADO")
+                                #function.mostrar_video('siu.mp4')
+                    else:
+                        nVidas-=1
+                        fallos+=1
+                        print("Incorrecto, el resultado era: ",resultadoOperacion)
+                        print("Te quedan ",nVidas," vidas")
+                        nFalladas+=1
+                        rachas=0
+                        if nVidas==0 and aciertos==0 and logro_loser==False:
+                            logro_loser = True
+                            print("LOGRO DE LOSER DESBLOQUEADO")
+                    nOperacion+=1
+                print("En tu partida numero ",nPartida," has acertado ",aciertos," y has fallado ",fallos)
+                print("Has acertado un ",round(aciertos*100/(aciertos+fallos),2)," % de las cuentas")
 
         case 2:
             salir=False
@@ -74,25 +82,61 @@ while True:
                         print("Saliendo")
                         salir=True
                     case 1:
-                        vidaNuevo=int(input("Introduce el nuevo numero de vidas: (entre 1 y 10): "))
-                        while vidaNuevo<0 or vidaNuevo>10:
-                            vidaNuevo=int(input("Numero no valido, ha de ser entre 1 y 10: "))
+                        try:
+                            vidaNuevo=int(input("Introduce el nuevo numero de vidas: (entre 1 y 10): "))
+
+                        except ValueError as error:
+                            print(f"ERROR:{error}")
+                            continue
+
+                        else:
+                            while vidaNuevo<0 or vidaNuevo>10:
+                                try:
+                                    vidaNuevo=int(input("Numero no valido, ha de ser entre 1 y 10: "))#Esta excepcion es cuando te equivocas, ya que hay un input diferente
+                                except ValueError as error:
+                                    print(f"ERROR:{error}")
+                                    continue
+                                else:
+                                    nVidas = vidaNuevo
+
                             nVidas = vidaNuevo
-                        nVidas = vidaNuevo
                     case 2:
-                        nuevomin = int(input("Introduce el numero de minimo: "))
-                        while nuevomin>=nummax:
-                            nuevomin = int(input("El numero minimo ha de ser menor al numero maximo: "))
-                            nummin = nuevomin
-                        nummin=nuevomin
+                        try:
+                            nuevomin = int(input("Introduce el numero de minimo: "))
+
+                        except ValueError as error:
+                            print(f"ERROR:{error}")
+                            continue
+
+                        else:
+
+                            while nuevomin>=nummax:
+                                try:
+                                    nuevomin = int(input("El numero minimo ha de ser menor al numero maximo: "))
+                                except ValueError as error:
+                                    print(f"ERROR:{error}")
+                                    continue
+                                else:
+                                    nummin = nuevomin
+
+                            nummin=nuevomin
                     case 3:
-                        nuevomax = int(input("Introduce el numero de maximo: "))
-                        while nuevomax <= nummin:
-                            nuevomax = int(input("El numero maximo ha de ser mayor al numero minimo: "))
-                            nummax = nuevomax
+                        try:
+                            nuevomax = int(input("Introduce el numero de maximo: "))
+                        except ValueError as error:
+                            print(f"ERROR:{error}")
+                            continue
+                        else:
+                            while nuevomax <= nummin:
+                                try:
+                                    nuevomax = int(input("El numero maximo ha de ser mayor al numero minimo: "))
+                                except ValueError as error:
+                                    print(f"ERROR:{error}")
+                                    continue
+                                else:
+                                    nummax = nuevomax
+
                         nummax = nuevomax
-
-
 
         case 3:
             print("Has jugado un total de: ",nPartida)
