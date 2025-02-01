@@ -7,7 +7,7 @@ import math
 
 while True:
     try:
-        a=int(input("Ingrese el valor de a: "))
+        a=int(input("Ingrese el valor de a: (0 para salir)"))
         if a==0:
             print("Saliendo del programa.")
             break
@@ -17,7 +17,8 @@ while True:
 
     except ValueError as error:
         print(f"ERROR: {error}")
-
+    except Exception as error:
+        print(f"ERROR: {error}")
 
     else:
         discriminante=b**2-4*a*c

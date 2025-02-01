@@ -90,7 +90,7 @@ while True:
                             continue
 
                         else:
-                            while vidaNuevo<0 or vidaNuevo>10:
+                            while vidaNuevo not in range(1,11):
                                 try:
                                     vidaNuevo=int(input("Numero no valido, ha de ser entre 1 y 10: "))#Esta excepcion es cuando te equivocas, ya que hay un input diferente
                                 except ValueError as error:

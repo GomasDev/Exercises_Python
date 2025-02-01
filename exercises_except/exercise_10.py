@@ -9,6 +9,8 @@ while True:
         num2=int(input("Introduce el segundo numero: "))
     except ValueError as error:
         print(f"ERROR: {error}")
+    except Exception as error:
+        print(f"ERROR: {error}")
 
     else:
         if num1>num2:

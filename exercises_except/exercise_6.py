@@ -6,14 +6,20 @@
 
 import random
 
+while True:
+    try:
+        inicio=float(input("Introduce el inicio: "))
+        fin=float(input("Introduce el fin: "))
+        nVeces=int(input("Introduce el numero de veces: "))
+    except ValueError as error:
+        print(f"ERROR: {error}")
+    except Exception as error:
+        print(f"ERROR: {error}")
+    else:
+        for i in range(nVeces):
+            num=random.uniform(inicio,fin)
+            print(round(num,2))
 
-try:
-    inicio=float(input("Introduce el inicio: "))
-    fin=float(input("Introduce el fin: "))
-    nVeces=int(input("Introduce el numero de veces: "))
-except ValueError as error:
-    print(f"ERROR: {error}")
-else:
-    for i in range(nVeces):
-        num=random.uniform(inicio,fin)
-        print(round(num,2))
+        seguir = input("Quieres seguir? (s/n): ").strip().lower()
+        if seguir != "s":
+            break

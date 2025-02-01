@@ -26,6 +26,8 @@ while True:
 
     except ValueError as error:
         print(f"ERROR: {error}")
+    except Exception as error:
+        print(f"ERROR: {error}")
 
     else:
         total=dedos+eleccionMaquina
