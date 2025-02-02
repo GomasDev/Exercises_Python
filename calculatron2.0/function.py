@@ -69,6 +69,8 @@ def imprimirMenu()->int:
         seleccion=int(input("Selecciona una opcion: "))
     except ValueError as error:
         print("Error: ", error)
+    except Exception as error:
+        print("Error: ", error)
     else:
         return seleccion
 
@@ -81,6 +83,8 @@ def menuConfiguracion()->int:
     try:
         seleccion=int(input("¿Que desea hacer? "))
     except ValueError as error:
+        print("Error: ", error)
+    except Exception as error:
         print("Error: ", error)
     else:
         return seleccion

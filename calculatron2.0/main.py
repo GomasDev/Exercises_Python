@@ -26,6 +26,9 @@ while True:
                 except ValueError as error:
                     print(f"ERROR:{error}")
                     continue
+                except Exception as error:
+                    print(f"ERROR:{error}")
+                    continue
 
                 else:
                     if resultado==resultadoOperacion:
@@ -87,7 +90,10 @@ while True:
 
                         except ValueError as error:
                             print(f"ERROR:{error}")
-                            continue
+
+                        except Exception as error:
+                            print(f"ERROR:{error}")
+
 
                         else:
                             while vidaNuevo not in range(1,11):
@@ -95,7 +101,10 @@ while True:
                                     vidaNuevo=int(input("Numero no valido, ha de ser entre 1 y 10: "))#Esta excepcion es cuando te equivocas, ya que hay un input diferente
                                 except ValueError as error:
                                     print(f"ERROR:{error}")
-                                    continue
+
+                                except Exception as error:
+                                    print(f"ERROR:{error}")
+
                                 else:
                                     nVidas = vidaNuevo
 
@@ -106,7 +115,10 @@ while True:
 
                         except ValueError as error:
                             print(f"ERROR:{error}")
-                            continue
+
+                        except Exception as error:
+                            print(f"ERROR:{error}")
+
 
                         else:
 
@@ -115,7 +127,10 @@ while True:
                                     nuevomin = int(input("El numero minimo ha de ser menor al numero maximo: "))
                                 except ValueError as error:
                                     print(f"ERROR:{error}")
-                                    continue
+
+                                except Exception as error:
+                                    print(f"ERROR:{error}")
+
                                 else:
                                     nummin = nuevomin
 
@@ -125,14 +140,21 @@ while True:
                             nuevomax = int(input("Introduce el numero de maximo: "))
                         except ValueError as error:
                             print(f"ERROR:{error}")
-                            continue
+
+                        except Exception as error:
+                            print(f"ERROR:{error}")
+
                         else:
                             while nuevomax <= nummin:
                                 try:
                                     nuevomax = int(input("El numero maximo ha de ser mayor al numero minimo: "))
                                 except ValueError as error:
                                     print(f"ERROR:{error}")
-                                    continue
+
+                                except Exception as error:
+                                    print(f"ERROR:{error}")
+
+
                                 else:
                                     nummax = nuevomax
 
