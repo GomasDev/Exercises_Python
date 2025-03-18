@@ -1,5 +1,5 @@
 #Crea una función que obtenga el máximo de una lista de números.
-#No  está permitido el uso de la función max(). (int[]: nums) => (int: máximo) 
+#No  está permitido el uso de la función preci_max(). (int[]: nums) => (int: máximo)
 
 def maxList(nums):
     maximo=nums[0]

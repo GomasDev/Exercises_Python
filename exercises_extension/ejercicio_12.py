@@ -6,7 +6,7 @@ def sustituir_letra(texto,letra1,letra2):
     nuevo_texto=texto_limpio.replace(letra1,letra2)
     return nuevo_texto
 
-texto=("Hola me llamo Rafa")
+texto=("Hola me llamo assessable_exercises_ud6")
 letra1=input("Dime letra a sustituir: ")
 letra2=input("Que letra quieres poner: ")
 print(sustituir_letra(texto,letra1,letra2))
